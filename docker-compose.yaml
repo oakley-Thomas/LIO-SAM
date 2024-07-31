@@ -23,6 +23,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "/etc/timezone:/etc/timezone:ro"
       - "/dev/*:/dev/*"
+      - shared-ros-bags:/data
     deploy:
       resources:
         reservations:
@@ -30,3 +31,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+
+volumes:
+  shared-ros-bags:
+    external: true
